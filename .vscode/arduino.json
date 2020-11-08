@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:uno",
+    "sketch": "3_axis_neu_145mm_0111_2020speed\\3_axis_neu_145mm_0111_2020speed.ino",
+    "output": "../build"
+}
