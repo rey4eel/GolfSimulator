@@ -109,22 +109,22 @@ void initializeMotor(AccelStepper &motor, uint8_t endSwitch, int maxSpeedInit, i
   motor.setMaxSpeed(maxSpeedInit);             
   motor.setAcceleration(accelerationInit);
 
-    while (digitalRead(endSwitch)) {      // Make the Stepper move CCW until the switch is activated
-      motor.moveTo(position);             // Set the position to move to
-      position--;                         // Decrease by 1 for next move if needed
-      teeMotor.run();                     // Start moving the stepper
-      delay(5);
-    }
+  while (digitalRead(endSwitch)) {      // Make the Stepper move CCW until the switch is deactivated
+    motor.moveTo(position);             // Set the position to move to
+    position--;                         // Decrease by 1 for next move if needed
+    motor.run();                        // Start moving the stepper
+    delay(5);
+  }
 
   motor.setCurrentPosition(0);            // Set the current position as zero for now
   position = 1;
 
-    while (!digitalRead(endSwitch)) {     
-      motor.moveTo(position);
-      motor.run();
-      position++;
-      delay(5);
-    }
+  while (!digitalRead(endSwitch)) {     // Make the Stepper move CCW until the switch is activated 
+    motor.moveTo(position);
+    motor.run();
+    position++;
+    delay(5);
+  }
 
   motor.setCurrentPosition(0);
 
