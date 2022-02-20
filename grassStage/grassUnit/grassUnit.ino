@@ -69,13 +69,11 @@ void loop() {
   }
 
   if (isBallOnSensor(shootingSensor, false)) {
-    Serial.println(isBallOnSensor(shootingSensor, false));
     moveMotor(teeMotor,-3000);
     teePos = 1;
   }
 
   if (!isBallOnSensor(shootingSensor, false)) {
-    Serial.println(isBallOnSensor(shootingSensor, false));
     moveMotor(teeMotor, MotorPosotion::teeLoading);
     teePos = 0;
   }
